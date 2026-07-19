@@ -2,47 +2,36 @@ import styled, { keyframes } from "styled-components";
 
 const pulse = keyframes`
   0%{
-    transform:
-      translate(0px,0px)
-      scale(1);
-
+    transform:scale(.9);
     opacity:.4;
   }
 
   50%{
-    transform:
-      translate(-8px,-8px)
-      scale(1.8);
-
+    transform:scale(1.6);
     opacity:1;
   }
 
   100%{
-    transform:
-      translate(-15px,-15px)
-      scale(1);
-
-    opacity:.5;
+    transform:scale(.9);
+    opacity:.4;
   }
 `;
 
 export const Particle = styled.div`
-  position:absolute;
+  position: absolute;
 
-  width:${({ size }) => size}px;
-  height:${({ size }) => size}px;
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
 
-  top:${({ top }) => top}%;
-  left:${({ left }) => left}%;
+  border-radius: 50%;
 
-  border-radius:50%;
+  background: ${({ color }) => color};
 
-  background:${({ color }) => color};
+  filter: blur(1px);
 
-  filter:blur(1px);
+  animation: ${pulse} 2.5s ease-in-out infinite;
 
-  animation:${pulse}
-      ${({ duration }) => duration}s
-      ease-in-out
-      infinite;
+  pointer-events: none;
+
+  will-change: left, top;
 `;

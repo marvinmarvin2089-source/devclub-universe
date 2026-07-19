@@ -7,24 +7,20 @@ import Meteors from "../Meteor";
 import BigBang from "../BigBang";
 import CoreLight from "../CoreLight";
 
-function Universe({
-  showNebula,
-  showStars,
-  showParticles,
-  showMeteors,
-}) {
+function Universe() {
   return (
     <Container>
+      <Nebula />
+
+      <Stars />
+
+      <Particles />
+
+      <Meteors />
+
       <BigBang />
+
       <CoreLight />
-
-      {showNebula && <Nebula />}
-
-      {showStars && <Stars />}
-
-      {showParticles && <Particles />}
-
-      {showMeteors && <Meteors />}
     </Container>
   );
 }

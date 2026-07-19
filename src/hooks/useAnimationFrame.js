@@ -1,16 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export function useAnimationFrame(callback) {
-  useEffect(() => {
-    let animationFrameId;
+  const requestRef = useRef();
+  const previousTimeRef = useRef();
 
-    function animate() {
-      callback();
-      animationFrameId = requestAnimationFrame(animate);
+  useEffect(() => {
+    function animate(time) {
+      if (previousTimeRef.current !== undefined) {
+        const deltaTime = time - previousTimeRef.current;
+
+        callback(deltaTime);
+      }
+
+      previousTimeRef.current = time;
+
+      requestRef.current = requestAnimationFrame(animate);
     }
 
-    animationFrameId = requestAnimationFrame(animate);
+    requestRef.current = requestAnimationFrame(animate);
 
-    return () => cancelAnimationFrame(animationFrameId);
+    return () => {
+      cancelAnimationFrame(requestRef.current);
+    };
   }, [callback]);
 }

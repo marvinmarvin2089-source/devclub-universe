@@ -1,4 +1,4 @@
-import { Particle } from "./styles";
+import Particle from "../Particle";
 
 const colors = [
   "#00F5A0",
@@ -7,10 +7,9 @@ const colors = [
 ];
 
 const particles = Array.from({ length: 25 }, () => ({
-  top: Math.random() * 100,
-  left: Math.random() * 100,
-  size: Math.random() * 3 + 1,
-  duration: Math.random() * 3 + 2,
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  size: Math.random() * 3 + 2,
   color: colors[Math.floor(Math.random() * colors.length)],
 }));
 
@@ -20,10 +19,9 @@ function Particles() {
       {particles.map((particle, index) => (
         <Particle
           key={index}
-          top={particle.top}
-          left={particle.left}
+          x={particle.x}
+          y={particle.y}
           size={particle.size}
-          duration={particle.duration}
           color={particle.color}
         />
       ))}
