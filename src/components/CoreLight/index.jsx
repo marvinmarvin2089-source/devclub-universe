@@ -1,5 +1,7 @@
 import { Aura, Light } from "./styles";
-import { useUniverse } from "../../context/UniverseContext";
+
+import { useUniverse } from "../../context/useUniverse";
+import { STORY_PHASES } from "../../constants/storyPhases";
 
 function CoreLight() {
   const { phase } = useUniverse();
@@ -9,11 +11,11 @@ function CoreLight() {
       <Aura
         style={{
           opacity:
-            phase === "idle"
+            phase === STORY_PHASES.IDLE
               ? 0.25
-              : phase === "core-light"
+              : phase === STORY_PHASES.CORE_LIGHT
               ? 0.5
-              : phase === "gravity"
+              : phase === STORY_PHASES.GRAVITY
               ? 0.8
               : 1,
         }}
@@ -22,7 +24,7 @@ function CoreLight() {
       <Light
         style={{
           transform:
-            phase === "collapse"
+            phase === STORY_PHASES.COLLAPSE
               ? "translate(-50%, -50%) scale(2)"
               : "translate(-50%, -50%) scale(1)",
         }}
@@ -30,5 +32,6 @@ function CoreLight() {
     </>
   );
 }
+
 
 export default CoreLight;

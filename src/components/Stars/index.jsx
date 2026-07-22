@@ -1,10 +1,10 @@
-import { Star } from './styles';
+import { Star } from "./styles";
 
 const colors = [
-  '#FFFFFF',
-  '#D6E8FF',
-  '#E9D8FD',
-  '#C8FFE5',
+  "#FFFFFF",
+  "#D6E8FF",
+  "#E9D8FD",
+  "#C8FFE5",
 ];
 
 const stars = Array.from({ length: 50 }, () => ({
@@ -21,14 +21,14 @@ function Stars() {
     <>
       {stars.map((star, index) => (
         <Star
-  key={index}
-  top={star.top}
-  left={star.left}
-  size={star.size}
-  duration={star.duration}
-  delay={star.delay}
-  color={star.color}
-/>
+          key={index}
+          $top={star.top}
+          $left={star.left}
+          $size={star.size}
+          $duration={star.duration}
+          $delay={star.delay}
+          $color={star.color}
+        />
       ))}
     </>
   );

@@ -37,25 +37,26 @@ const twinkle = keyframes`
 `;
 
 export const Star = styled.div`
-  position:absolute;
+  position: absolute;
 
-  width:${({ size }) => size}px;
-  height:${({ size }) => size}px;
+  width: ${({ $size }) => $size}px;
+  height: ${({ $size }) => $size}px;
 
-  top:${({ top }) => top}%;
-  left:${({ left }) => left}%;
+  top: ${({ $top }) => $top}%;
+  left: ${({ $left }) => $left}%;
 
-  border-radius:50%;
+  border-radius: 50%;
 
-  background:${({ color }) => color};
+  background: ${({ $color }) => $color};
 
-  animation:${twinkle} ${({ duration }) => duration}s ease-in-out infinite;
+  animation: ${twinkle} ${({ $duration }) => $duration}s ease-in-out infinite;
+  animation-delay: ${({ $delay }) => $delay}s;
 
   box-shadow:
     0 0 8px rgba(255,255,255,.8),
     0 0 18px rgba(255,255,255,.5);
 
-  will-change:transform, opacity;
+  will-change: transform, opacity;
 
-  pointer-events:none;
+  pointer-events: none;
 `;
