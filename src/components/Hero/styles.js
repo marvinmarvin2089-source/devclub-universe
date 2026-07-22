@@ -96,7 +96,7 @@ export const Buttons = styled.div`
   }
 `;
 
-export const PrimaryButton = styled.button`
+export const PrimaryButton = styled.a`
   padding: 15px 27px;
 
   border: none;
@@ -106,6 +106,7 @@ export const PrimaryButton = styled.button`
 
   font-size: 1rem;
   font-weight: 700;
+  text-decoration: none;
 
   background: linear-gradient(
     135deg,
@@ -132,7 +133,7 @@ export const PrimaryButton = styled.button`
   }
 `;
 
-export const SecondaryButton = styled.button`
+export const SecondaryButton = styled.a`
   padding: 15px 27px;
 
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -142,6 +143,7 @@ export const SecondaryButton = styled.button`
 
   font-size: 1rem;
   font-weight: 700;
+  text-decoration: none;
 
   background: rgba(255, 255, 255, 0.05);
 

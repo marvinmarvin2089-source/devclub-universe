@@ -27,6 +27,50 @@ const metalShine = keyframes`
   }
 `;
 
+const logoAppearMobile = keyframes`
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.34);
+
+    filter: blur(14px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.48);
+
+    filter: blur(0);
+  }
+`;
+
+const logoAppearSmallMobile = keyframes`
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.28);
+
+    filter: blur(14px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.42);
+
+    filter: blur(0);
+  }
+`;
+
 const subtleGlow = keyframes`
   0%,
   100% {
@@ -68,7 +112,8 @@ export const Container = styled.button`
       ? "translate(0, 0) scale(.27)"
       : "translate(-50%, -50%) scale(1)"};
 
-  transform-origin: top left;
+  transform-origin: ${({ $move }) =>
+    $move ? "top left" : "center center"};
 
   pointer-events: ${({ $clickable }) =>
     $clickable ? "auto" : "none"};
@@ -113,6 +158,52 @@ export const Container = styled.button`
         border-radius: 24px;
       }
     `}
+
+  @media (max-width: 700px) {
+    top: ${({ $move }) =>
+      $move ? "14px" : "45%"};
+
+    left: ${({ $move }) =>
+      $move ? "12px" : "50%"};
+
+    gap: 18px;
+
+    transform: ${({ $move }) =>
+      $move
+        ? "translate(0, 0) scale(.19)"
+        : "translate(-50%, -50%) scale(.48)"};
+
+    ${({ $move }) =>
+      !$move &&
+      css`
+        animation:
+          ${logoAppearMobile}
+          800ms ease forwards;
+      `}
+  }
+
+  @media (max-width: 420px) {
+    top: ${({ $move }) =>
+      $move ? "12px" : "45%"};
+
+    left: ${({ $move }) =>
+      $move ? "10px" : "50%"};
+
+    gap: 14px;
+
+    transform: ${({ $move }) =>
+      $move
+        ? "translate(0, 0) scale(.17)"
+        : "translate(-50%, -50%) scale(.42)"};
+
+    ${({ $move }) =>
+      !$move &&
+      css`
+        animation:
+          ${logoAppearSmallMobile}
+          800ms ease forwards;
+      `}
+  }
 `;
 
 export const BrandName = styled.div`
@@ -207,8 +298,7 @@ export const Hint = styled.span`
 
   backdrop-filter: blur(12px);
 
-  opacity: ${({ $visible }) =>
-    $visible ? 0 : 0};
+  opacity: 0;
 
   transform: translateX(-50%) translateY(-6px);
 

@@ -55,7 +55,22 @@ const modules = [
   },
 ];
 
+const studentPlatformUrl =
+  "https://loja.devclub.com.br/devclub/users/signin";
+
 function StudentArea() {
+  function scrollToFormations(event) {
+    event.preventDefault();
+
+    const formationsSection =
+      document.querySelector("#formacoes");
+
+    formationsSection?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
   return (
     <Section id="alunos">
       <Glow />
@@ -77,15 +92,19 @@ function StudentArea() {
 
         <Actions>
           <PrimaryButton
-            href="https://devclub.com.br"
+            href={studentPlatformUrl}
             target="_blank"
             rel="noreferrer"
           >
             Acessar plataforma
+
             <span aria-hidden="true">↗</span>
           </PrimaryButton>
 
-          <SecondaryButton href="#formacoes">
+          <SecondaryButton
+            href="#formacoes"
+            onClick={scrollToFormations}
+          >
             Explorar formações
           </SecondaryButton>
         </Actions>
@@ -106,13 +125,19 @@ function StudentArea() {
 
           <ProfileInfo>
             <StudentName>Futuro Dev</StudentName>
-            <StudentLevel>Jornada em evolução</StudentLevel>
+
+            <StudentLevel>
+              Jornada em evolução
+            </StudentLevel>
           </ProfileInfo>
         </Profile>
 
         <ProgressArea>
           <ProgressHeader>
-            <ProgressLabel>Progresso da missão</ProgressLabel>
+            <ProgressLabel>
+              Progresso da missão
+            </ProgressLabel>
+
             <ProgressValue>72%</ProgressValue>
           </ProgressHeader>
 
@@ -124,17 +149,23 @@ function StudentArea() {
         <Modules>
           {modules.map((module) => (
             <Module key={module.title}>
-              <ModuleIcon>{module.icon}</ModuleIcon>
+              <ModuleIcon>
+                {module.icon}
+              </ModuleIcon>
 
               <ModuleContent>
-                <ModuleTitle>{module.title}</ModuleTitle>
+                <ModuleTitle>
+                  {module.title}
+                </ModuleTitle>
 
                 <ModuleDescription>
                   {module.description}
                 </ModuleDescription>
               </ModuleContent>
 
-              <ModuleStatus>{module.status}</ModuleStatus>
+              <ModuleStatus>
+                {module.status}
+              </ModuleStatus>
             </Module>
           ))}
         </Modules>
